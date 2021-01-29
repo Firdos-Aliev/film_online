@@ -1,0 +1,14 @@
+{% extends 'filmsapp/root.html' %}
+{% block content %}
+    {% include 'filmsapp/includes/inc__menu.html' %}
+    <div class="film-block-detail">
+        <h1>{{ object.name }} {{ object.surname }}</h1>
+        <p>{{ object.role }}</p>
+        <div>
+            <img src="/media/{{object.img}}" alt="#">
+            <p class="film-block-detail-about">{{ object.about }}</p>
+        </div>
+        <p><a href="{% url 'film:participant_history' pk=object.pk %}">Фильмы с эго участием</a></p>
+    </div>
+
+{% endblock %}

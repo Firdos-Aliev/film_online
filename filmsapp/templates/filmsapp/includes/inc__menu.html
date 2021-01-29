@@ -5,7 +5,7 @@
         {% else %}
             <li><a href="{% url 'auth:login' %}">Войти</a></li>
         {% endif %}
-        <li><a href="{% url 'film:movies_list' page=1 %}">Фильмы</a></li>
+        <li><a href="{% url 'film:movies_list' %}">Фильмы</a></li>
         <li><a href="{% url 'film:category_list' %}">Каталог</a></li>
         <li><a href="{% url 'film:genre_list' %}">Жанры</a></li>
         {% if user.is_authenticated %}

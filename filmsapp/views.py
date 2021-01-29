@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView
-from filmsapp.models import Movie, Category, Genre
+from filmsapp.models import Movie, Category, Genre, Participant
 
 
 class PageMainTitleMixin:
@@ -17,7 +17,6 @@ class MoviesList(PageMainTitleMixin, ListView):
 
     def get_context_data(self, **kwargs):
         data = super().get_context_data(object_list=None, **kwargs)
-        print(data)
         return data
 
     def get_queryset(self):
@@ -67,3 +66,21 @@ class MovieGenrePK(PageMainTitleMixin, ListView):
     def get_queryset(self):
         pk = self.kwargs['pk']
         return self.model.objects.filter(genres__pk=pk)
+
+
+class ParticipantDetail(PageMainTitleMixin, DetailView):
+    model = Participant
+    main_title = "Участник"
+
+    def get_queryset(self):
+        pk = self.kwargs['pk']
+        return self.model.objects.filter(pk=pk)
+
+
+class ParticipantHistory(PageMainTitleMixin, ListView):
+    model = Movie
+    main_title = "Фильмография"
+
+    def get_queryset(self):
+        pk = self.kwargs['pk']
+        return self.model.objects.filter(actors__pk=pk)

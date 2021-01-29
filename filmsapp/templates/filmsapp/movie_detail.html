@@ -16,11 +16,11 @@
         <p>Страна: {{ object.country }}</p>
         <p>Актеры:</p>
         {% for actors in object.actors.all %}
-            <a href="#">{{actors}}</a>
+            <p><a href="{% url 'film:participant_detail' pk=actors.pk %}">{{actors}}</a></p>
         {% endfor %}
         <p>Режиссеры:</p>
         {% for director in object.directors.all %}
-            <a href="#">{{director}}</a>
+            <p><a href="{% url 'film:participant_detail' pk=director.pk %}">{{director}}</a></p>
         {% endfor %}
     </div>
     <div class="video">
