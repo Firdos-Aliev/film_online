@@ -1,0 +1,10 @@
+{% extends 'filmsapp/root.html' %}
+
+{% block content %}
+    {% include 'filmsapp/includes/inc__menu.html' %}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Отправить">
+    </form>
+{% endblock %}

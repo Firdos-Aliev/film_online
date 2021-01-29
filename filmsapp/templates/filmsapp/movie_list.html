@@ -1,0 +1,24 @@
+{% extends 'filmsapp/root.html' %}
+{% block content %}
+    {% include 'filmsapp/includes/inc__menu.html' %}
+    {% for i in object_list %}
+        <div class="film-block">
+            <h4>{{ i.name }}</h4>
+            <img src="/media/{{i.img}}" alt="#">
+            <br>
+            <a href="{% url 'film:movie_detail' pk=i.pk %}">Подробнее</a>
+        </div>
+    {% endfor %}
+    {% if is_paginated %}
+        <div class="pagination-block">
+        <hr>
+        {% if page_obj.has_previous %}
+            <a href="{% url 'film:movies_list' page=page_obj.previous_page_number %}"><<</a>
+        {% endif %}
+            <a href="{% url 'film:movies_list' page=page_obj.number %}">{{ page_obj.number }}</a>
+        {% if page_obj.has_next %}
+            <a href="{% url 'film:movies_list' page=page_obj.next_page_number %}">>></a>
+        {% endif %}
+    {% endif %}
+</div>
+{% endblock %}

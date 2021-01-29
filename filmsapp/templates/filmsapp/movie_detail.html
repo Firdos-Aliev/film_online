@@ -1,0 +1,29 @@
+{% extends 'filmsapp/root.html' %}
+{% block content %}
+    {% include 'filmsapp/includes/inc__menu.html' %}
+    <div class="film-block-detail">
+        <h1>{{ object.name }}</h1>
+        <div>
+            <img src="/media/{{object.img}}" alt="#">
+            <p class="film-block-detail-about">{{ object.about }}</p>
+        </div>
+        <p>Жанры:</p>
+        {% for genre in object.genres.all %}
+            <a href="{% url 'film:film_genre' pk=genre.pk%}">{{genre}}</a>
+        {% endfor %}
+        <p>Год: {{ object.year }}</p>
+        <p>Бюджет: {{ object.budget}}</p>
+        <p>Страна: {{ object.country }}</p>
+        <p>Актеры:</p>
+        {% for actors in object.actors.all %}
+            <a href="#">{{actors}}</a>
+        {% endfor %}
+        <p>Режиссеры:</p>
+        {% for director in object.directors.all %}
+            <a href="#">{{director}}</a>
+        {% endfor %}
+    </div>
+    <div class="video">
+        <video src="/media/{{ object.video }}" controls="controls"></video>
+    </div>
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends 'filmsapp/root.html' %}
+{% block content %}
+    {% include 'filmsapp/includes/inc__menu.html' %}
+    {% for i in object_list %}
+        <div class="film-block">
+            <a href="{% url 'film:film_category' pk=i.pk %}">{{ i.name }}</a>
+        </div>
+    {% endfor %}
+{% endblock %}

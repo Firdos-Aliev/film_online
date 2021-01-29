@@ -1,0 +1,24 @@
+.film-block{
+    border: black solid 1px;
+    width: 400px;
+    display: inline-block;
+    text-align: center;
+}
+
+.film-block img{
+    height: 300px;
+}
+
+.film-block a{
+    text-decoration: none;
+}
+
+.film-block-detail img{
+    float: left;
+    padding-right: 10px;
+    height: 600px;
+}
+
+.film-block-detail-about{
+
+}
