@@ -57,7 +57,7 @@ class Movie(models.Model):
     genres = models.ManyToManyField(Genre, verbose_name="Жанр", related_name="film_genres", blank=True)
     category = models.ManyToManyField(Category, verbose_name="Категория", related_name="film_category", blank=True)
     video = models.FileField("Видео", upload_to="videos/", blank=True)
-    is_active = models.BooleanField("Активный", default=False)
+    is_active = models.BooleanField("Активный", default=False, db_index=True)
 
     def __str__(self):
         return self.name

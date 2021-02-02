@@ -47,7 +47,9 @@ class MovieCatalogPK(PageMainTitleMixin, ListView):
 
     def get_queryset(self):
         pk = self.kwargs['pk']
-        return self.model.objects.filter(category__pk=pk)
+        # можно попробывать для оптимизации
+        # return self.model.objects.prefetch_related('category').filter(category__pk=pk, is_active=True)
+        return self.model.objects.filter(category__pk=pk, is_active=True)
 
 
 class MovieGenre(PageMainTitleMixin, ListView):
@@ -65,7 +67,7 @@ class MovieGenrePK(PageMainTitleMixin, ListView):
 
     def get_queryset(self):
         pk = self.kwargs['pk']
-        return self.model.objects.filter(genres__pk=pk)
+        return self.model.objects.filter(genres__pk=pk, is_active=True)
 
 
 class ParticipantDetail(PageMainTitleMixin, DetailView):
